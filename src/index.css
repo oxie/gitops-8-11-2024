@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --animation-timing: 300ms;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-slate-900 text-white antialiased overflow-x-hidden;
+  }
+
+  #root {
+    @apply overflow-x-hidden;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply relative bg-slate-800/50 backdrop-blur-sm border border-slate-700 
+           hover:border-gold-500/50 transition-all duration-300
+           hover:shadow-[0_0_20px_rgba(250,189,0,0.15)];
+  }
+
+  .hover-lift {
+    @apply transform transition-all duration-300 
+           hover:-translate-y-1 hover:shadow-lg hover:shadow-gold-500/20;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-gold-400 to-gold-600 bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply px-8 py-4 bg-gradient-to-r from-gold-500 to-gold-600 
+           rounded-lg font-semibold text-slate-900 
+           hover:shadow-lg hover:shadow-gold-500/25 
+           transition-all duration-300 
+           hover:scale-105 active:scale-95;
+  }
+
+  .section-container {
+    @apply container mx-auto px-6 relative;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold mb-6 gradient-text;
+  }
+
+  .section-description {
+    @apply text-xl text-slate-300 max-w-3xl mx-auto;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgb(250, 189, 0, 0.2),
+                0 0 20px rgb(250, 189, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 10px rgb(250, 189, 0, 0.4),
+                0 0 40px rgb(250, 189, 0, 0.2);
+  }
+}
